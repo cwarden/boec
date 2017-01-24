@@ -2,11 +2,11 @@
 #include <list>
 #include "Posting.cpp"
 
-struct Transaction
-{
+struct Transaction {
     std::string state;
     std::string date;
     std::string payee;
+    std::string note;
     std::list<Posting> postings;
 
     std::string toString()
@@ -14,22 +14,28 @@ struct Transaction
         return this->payee + this->date;
     }
 
-    std::string toLatex()
+    std::string toLatex(std::list<DictionaryEntry> &dictionary)
     {
         std::string transactionRow;
+        // Date
         transactionRow += this->date + " & ";
-        transactionRow += " & "; // D account
-        transactionRow += " & "; // C account
+        // AccountCode
+        transactionRow += " & ";
+        // Payee
         transactionRow += this->payee + " & ";
+        // Debit
+        transactionRow += " & ";
+        // Credit
         transactionRow += "\\\\";
+        transactionRow += "\n";
 
-        /**
-         * Iterate through all postings.
-         */
-
-        for (std::list<Posting>::iterator it = this->postings.begin(); it != this->postings.end(); ++it) {
-            std::cout << (*it).toString();
+        for (std::list<Posting>::iterator posting = this->postings.begin();
+             posting != this->postings.end();
+             ++posting) {
+            transactionRow += (*posting).toLatex(dictionary);
         }
+
+        transactionRow += "\\hline";
 
         return transactionRow;
     }

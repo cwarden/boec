@@ -1,21 +1,23 @@
 \documentclass[10pt]{article}
 
+\usepackage[utf8]{inputenc}
 \usepackage{fouriernc}
+\usepackage{tabu}
 \usepackage[
-	a4paper,
-	left=20mm,
-	right=20mm,
-	top=20mm,
-	bottom=20mm]{geometry}
+    a4paper,
+    left=20mm,
+    right=20mm,
+    top=20mm,
+    bottom=20mm]{geometry}
 \usepackage{array}
 \setlength\extrarowheight{2pt}
 
 \begin{document}
 
-	\subsection*{Journal 2017 - My Company}
+    \subsection*{Journal 2017 - My Company}
 
     \small
-	\begin{tabular} { | l | l | l | l | r | r | }
+    \begin{tabu} to \textwidth  { | l | l | l | l | r | r | }
 
         \hline
         \# & DATE & RGS & DETAILS & \multicolumn{1}{l|}{DEBET} & \multicolumn{1}{l|}{CREDIT} \\
@@ -23,6 +25,6 @@
 
         \input{__BOEC__}
 
-	\end{tabular}
+    \end{tabu}
 
 \end{document}

@@ -1,0 +1,40 @@
+alias Res=Resultaat
+alias Kosten=Res:Bedrijfskosten
+alias Debiteuren=Balans:Vorderingen:Debiteuren
+alias Crediteuren=Balans:Schulden:Crediteuren:Handelscrediteuren
+alias BTW-Tegoed=Balans:Vorderingen:Btw:Terug te vorderen
+alias Verkoop-Intracommunautair=Res:Omzet:Diensten:Met heffing verlegd
+
+;;;
+;;; JOURNAL FOR 2017
+;;;
+
+
+2017.01.01 * Kamer van Koophandel
+    ;Inkomende fact. 4783, oprichting zaak
+    Kosten:Administratief:Overig                50.00
+    Crediteuren
+
+
+2017.01.01 * Kamer van Koophandel
+    ;Inkomende fact. 4784, afschrift akte
+    Kosten:Administratief:Overig                15.00
+    Crediteuren
+
+
+2017.01.13 * Klant Eén
+    ;Uitgaande fact. 17/001
+    Debiteuren                                  700.00
+    Verkoop-Intracommunautair
+
+
+2017.01.14 * Boekhouder
+    ;Inkomende fact. 37842
+    Kosten:Accountants:Overige                  485.00
+    Crediteuren                                -586.85
+    BTW-Tegoed
+
+2017.01.18 * Klant Twee
+    ;Uitgaande fact. 17/002
+    Debiteuren                                  400.00
+    Verkoop-Intracommunautair

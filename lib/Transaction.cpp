@@ -10,10 +10,16 @@ struct Transaction {
     std::string note;
     std::list<Posting> postings;
 
-    std::string toString()
+    /**
+     * Sort by debet first, credit last
+     */
+    void sortPostings()
     {
-        return this->payee + this->date;
+        this->postings.sort([](const Posting &a, const Posting &b) {
+            return a.amount > b.amount;
+        });
     }
+
 
     std::string toLatex(std::list<DictionaryEntry> &dictionary)
     {
@@ -49,6 +55,7 @@ struct Transaction {
             transactionRow += "\n";
         }
 
+        this->sortPostings();
         for (std::list<Posting>::iterator posting = this->postings.begin();
              posting != this->postings.end();
              ++posting) {

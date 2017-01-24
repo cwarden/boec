@@ -11,8 +11,8 @@ struct Posting {
     {
 
         std::string postingRow;
-        char printableAmount[20];
-        snprintf(printableAmount, 100, "%.2f", std::fabs(this->amount));
+        char printableAmount[10];
+        snprintf(printableAmount, 10, "%.2f", std::fabs(this->amount));
 
         for(std::list<DictionaryEntry>::iterator dictionaryEntry = dictionary.begin();
             dictionaryEntry != dictionary.end();

@@ -3,7 +3,9 @@ alias Kosten=Res:Bedrijfskosten
 alias Debiteuren=Balans:Vorderingen:Debiteuren
 alias Crediteuren=Balans:Schulden:Crediteuren:Handelscrediteuren
 alias BTW-Tegoed=Balans:Vorderingen:Btw:Terug te vorderen
+alias BTW-TeBetalen=Balans:Schulden:Crediteuren:BTW
 alias Verkoop-Intracommunautair=Res:Omzet:Diensten:Met heffing verlegd
+alias Verkoop-Nationaal=Res:Omzet:Diensten:Met heffing nationaal
 
 ;;;
 ;;; JOURNAL FOR 2017
@@ -36,5 +38,6 @@ alias Verkoop-Intracommunautair=Res:Omzet:Diensten:Met heffing verlegd
 
 2017.01.18 * Klant Twee
     ;Uitgaande fact. 17/002
-    Debiteuren                                  400.00
-    Verkoop-Intracommunautair
+    Debiteuren                                  484.00
+    BTW-TeBetalen                              - 84.00
+    Verkoop-Nationaal

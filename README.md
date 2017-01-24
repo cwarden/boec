@@ -41,7 +41,9 @@ Some notes on this layout and how it relates to the ledger entries:
 * The account codes can be specified in a dictionary, located in
   `$HOME/.boecdict`. The layout of this file is quite simple, and can be
   copied from [the example file](https://github.com/flugelfoxes/boec/blob/master/samples/boecdict.sample) in this
-  repository.
+  repository. The codes should always be equal in length (in this sample the
+  codes are 9 characters long). 9 is the default value. If your code lengths
+  aren't 9, add the `--codelength` flag like so: `boec --codelength 6`.
 * "Customer name" and "Vendor name", i.e. the first line of each entry in the
   details cell, is what is called the [payee]() in ledger-cli. It is printed
   in bold in the LaTeX output.

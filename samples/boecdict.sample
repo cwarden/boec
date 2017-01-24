@@ -1,12 +1,13 @@
 // Format: Account Code <space> Ledger Hierarchy
 // Example below uses RGS (Referentie GrootboekSchema) for the Account Codes
 
-010101001 Balans:Eigen Vermogen:Beginbalans
 100203001 Balans:Liquide Middelen:Bank:KBC
 100203002 Balans:Liquide Middelen:Bank:Rabo
 110101000 Balans:Vorderingen:Debiteuren
 110201000 Balans:Vorderingen:Btw:Terug te vorderen
 120301000 Balans:Schulden:Crediteuren:Handelscrediteuren
-420904000 Winst/Verlies:Bedrijfskosten:Accountants:Overige
-421012000 Winst/Verlies:Bedrijfskosten:Administratief:Overig
-800305000 Winst/Verlies:Omzet:Diensten:Met heffing verlegd
+120501002 Balans:Schulden:Crediteuren:BTW
+420904000 Resultaat:Bedrijfskosten:Accountants:Overige
+421012000 Resultaat:Bedrijfskosten:Administratief:Overig
+800301000 Resultaat:Omzet:Diensten:Met heffing nationaal
+800305000 Resultaat:Omzet:Diensten:Met heffing verlegd

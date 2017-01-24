@@ -7,7 +7,7 @@
 #include "lib/Transaction.cpp"
 #include "lib/Dictionary.cpp"
 
-int main()
+int main(int argc, char* argv[])
 {
 
     /**
@@ -71,6 +71,7 @@ int main()
      * Read each transaction into a Transaction struct.
      */
 
+    std::string outputBuffer = "";
     std::list<Transaction> parsedTransactions;
     rapidxml::xml_node<>* currentTransaction = transactions->first_node();
 
@@ -117,12 +118,45 @@ int main()
 
         parsedTransactions.push_back(*transaction);
 
-        std::cout << transaction->toLatex(dictionary);
-        std::cout << "\n";
+        outputBuffer += transaction->toLatex(dictionary) + "\n";
 
         currentTransaction = currentTransaction->next_sibling();
         transactionId++;
     }
+
+    std::string templatePath;
+    for (int i = 1; i < argc; ++i) {
+        if (std::string(argv[i]) == "--template") {
+            if (i + 1 < argc) {
+                templatePath = argv[i+1];
+                std::ifstream templateFile;
+                templateFile.open(templatePath);
+                if (templateFile.fail()) {
+                    std::cerr << "Sorry, the template \"" + templatePath + "\" could not be read." << std::endl;
+                    return 1;
+                }
+
+                while(!templateFile.eof()) {
+                    std::string templateLine;
+                    getline(templateFile, templateLine);
+                    if (templateLine.find("\\input{__BOEC__}") != std::string::npos) {
+                        std::cout << outputBuffer;
+                        continue;
+                    } else {
+                        std::cout << templateLine << std::endl;
+                        continue;
+                    }
+                }
+
+                return 0;
+            } else {
+                std::cerr << "Sorry, the --template option expects a path to a .tex file." << std::endl;
+                return 1;
+            }
+        }
+    }
+
+    std::cout << outputBuffer;
 
     return 0;
 }

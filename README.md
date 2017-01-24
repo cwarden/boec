@@ -48,6 +48,22 @@ Some notes on this layout and how it relates to the ledger entries:
 * What is shown as "Invoice #2017/003", "Bill #1342", etc., are [notes]() in
   ledger-cli. It is printed in italics (emph) in the LaTeX output
 
+### Extending a LaTeX template
+
+You can easily incorporate the output of `boec` in an existing LaTeX template.
+Just ensure that the exact spot where you'd like to insert the boec output has
+the line `\input{__BOEC__}`, and call the program with the following
+parameter:
+
+```bash
+ledger xml | boec --template path/to/template.tex
+
+# Or to compile the PDF at once:
+ledger xml | boec --template path/to/template.tex > /tmp/report.tex && pdflatex /tmp/report.tex
+```
+
+For an example, have a look in the samples directory: [template.tex](https://github.com/flugelfoxes/boec/blob/master/samples/template.tex).
+
 
 ## Installing boec
 

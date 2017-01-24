@@ -74,6 +74,7 @@ int main()
     std::list<Transaction> parsedTransactions;
     rapidxml::xml_node<>* currentTransaction = transactions->first_node();
 
+    int transactionId = 1;
     while(currentTransaction != nullptr) {
 
         /**
@@ -87,6 +88,7 @@ int main()
         }
 
         auto transaction = new Transaction;
+        transaction->id = transactionId;
         transaction->payee = currentTransaction->first_node("payee")->value();
         transaction->date = currentTransaction->first_node("date")->value();
         transaction->state = currentTransaction->first_node("date")->value();
@@ -118,6 +120,7 @@ int main()
         std::cout << "\n";
 
         currentTransaction = currentTransaction->next_sibling();
+        transactionId++;
     }
 
     return 0;

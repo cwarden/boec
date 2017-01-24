@@ -3,6 +3,7 @@
 #include "Posting.cpp"
 
 struct Transaction {
+    int id;
     std::string state;
     std::string date;
     std::string payee;
@@ -17,6 +18,9 @@ struct Transaction {
     std::string toLatex(std::list<DictionaryEntry> &dictionary)
     {
         std::string transactionRow;
+        // Id
+        std::string idStringified = std::to_string(this->id);
+        transactionRow += std::string(5 - idStringified.length(), '0').append(idStringified) + " & ";
         // Date
         transactionRow += this->date + " & ";
         // AccountCode

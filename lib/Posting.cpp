@@ -23,6 +23,9 @@ struct Posting {
             }
         }
 
+        // ID
+        postingRow += " & ";
+
         // Date
         postingRow += " & ";
 

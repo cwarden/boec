@@ -5,6 +5,9 @@ all:
 
 release: format all
 
+install: boec
+	install -m 0755 boec /usr/local/bin
+
 format:
 ifndef ASTYLE
 	$(error "Could not run formatting. Install astyle first.");

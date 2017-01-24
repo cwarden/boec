@@ -4,8 +4,8 @@
 #include <fstream>
 
 #include "vendor/rapidxml/rapidxml.hpp"
-#include "Transaction.cpp"
-#include "Dictionary.cpp"
+#include "lib/Transaction.cpp"
+#include "lib/Dictionary.cpp"
 
 int main()
 {

@@ -40,7 +40,7 @@ Some notes on this layout and how it relates to the ledger entries:
   ledger output, and always starts with 1.
 * The account codes can be specified in a dictionary, located in
   `$HOME/.boecdict`. The layout of this file is quite simple, and can be
-  copied from [the example file](https://github.com/flugelfoxes/boec/blob/master/boecdict.sample) in this
+  copied from [the example file](https://github.com/flugelfoxes/boec/blob/master/samples/boecdict.sample) in this
   repository.
 * "Customer name" and "Vendor name", i.e. the first line of each entry in the
   details cell, is what is called the [payee]() in ledger-cli. It is printed

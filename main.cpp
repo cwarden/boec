@@ -92,6 +92,7 @@ int main()
         transaction->payee = currentTransaction->first_node("payee")->value();
         transaction->date = currentTransaction->first_node("date")->value();
         transaction->state = currentTransaction->first_node("date")->value();
+        transaction->note = currentTransaction->first_node("note") ? currentTransaction->first_node("note")->value() : "";
 
 
         /**

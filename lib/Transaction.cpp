@@ -26,12 +26,28 @@ struct Transaction {
         // AccountCode
         transactionRow += " & ";
         // Payee
-        transactionRow += this->payee + " & ";
+        transactionRow += "\\textbf{" + this->payee + "} & ";
         // Debit
         transactionRow += " & ";
         // Credit
         transactionRow += "\\\\";
         transactionRow += "\n";
+
+        if (this->note.length()) {
+            // Id
+            transactionRow += " & ";
+            // Date
+            transactionRow += " & ";
+            // AccountCode
+            transactionRow += " & ";
+            // Payee
+            transactionRow += "\\emph{" + this->note + "} & ";
+            // Debit
+            transactionRow += " & ";
+            // Credit
+            transactionRow += "\\\\";
+            transactionRow += "\n";
+        }
 
         for (std::list<Posting>::iterator posting = this->postings.begin();
              posting != this->postings.end();

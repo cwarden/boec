@@ -43,6 +43,7 @@ int main(int argc, char* argv[])
             }
             auto entry = new DictionaryEntry {line.substr(0, codeLength), line.substr(codeLength + 1, line.size())};
             dictionary.push_back(*entry);
+            delete entry;
         }
     }
 
@@ -85,7 +86,6 @@ int main(int argc, char* argv[])
      */
 
     std::string outputBuffer = "";
-    std::list<Transaction> parsedTransactions;
     rapidxml::xml_node<>* currentTransaction = transactions->first_node();
 
     int transactionId = 1;
@@ -127,11 +127,11 @@ int main(int argc, char* argv[])
                                         ->value());
             transaction->postings.push_back(*posting);
             currentPosting = currentPosting->next_sibling();
+            delete posting;
         }
 
-        parsedTransactions.push_back(*transaction);
-
         outputBuffer += transaction->toLatex(dictionary) + "\n";
+        delete transaction;
 
         currentTransaction = currentTransaction->next_sibling();
         transactionId++;

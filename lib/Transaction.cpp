@@ -29,8 +29,6 @@ struct Transaction {
         transactionRow += std::string(5 - idStringified.length(), '0').append(idStringified) + " & ";
         // Date
         transactionRow += this->date + " & ";
-        // AccountCode
-        transactionRow += " & ";
         // Payee
         transactionRow += "\\textbf{" + this->payee + "} & ";
         // Debit
@@ -43,8 +41,6 @@ struct Transaction {
             // Id
             transactionRow += " & ";
             // Date
-            transactionRow += " & ";
-            // AccountCode
             transactionRow += " & ";
             // Payee
             transactionRow += "\\emph{" + this->note + "} & ";

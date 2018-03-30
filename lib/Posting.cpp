@@ -42,10 +42,6 @@ struct Posting {
         // Date
         postingRow += " & ";
 
-        // Debit
-        postingRow += this->accountCode.size() ? this->accountCode : "";
-        postingRow += " & ";
-
         // Payee
         postingRow += this->accountName + " & ";
 

@@ -9,45 +9,7 @@
 
 int main(int argc, char* argv[])
 {
-
-    /**
-     * Check if we have an account dictionary.
-     * If so, read it. If not, issue a warning.
-     */
-
     std::list<DictionaryEntry> dictionary;
-
-    std::ifstream in_stream;
-    in_stream.open((std::string) (getenv("HOME")) + "/.boecdict");
-    if (in_stream.fail()) {
-        std::cerr << "Not using account codes, could not read " << getenv("HOME") << "/.boecdict\n";
-    } else {
-        // TODO: Move arg parsing to a centralized place so we don't repeat
-        // ourselves when checking for the --template flag.
-        int codeLength = 9;
-        for (int i = 1; i < argc; ++i) {
-            if (std::string(argv[i]) == "--codelength") {
-                if (i + 1 < argc) {
-                    codeLength = std::stoi(argv[i+1]);
-                } else {
-                    std::cerr << "Sorry, the --codelength flag expects a value greater than zero." << std::endl;
-                    return 1;
-                }
-            }
-        }
-        while(!in_stream.eof()) {
-            std::string line;
-            getline(in_stream, line);
-            if (!line.size() || line.substr(0,2) == "//") {
-                continue;
-            }
-            auto entry = new DictionaryEntry {line.substr(0, codeLength), line.substr(codeLength + 1, line.size())};
-            dictionary.push_back(*entry);
-            delete entry;
-        }
-    }
-
-
 
     /**
      * Create the document from stdin

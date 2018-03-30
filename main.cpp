@@ -116,6 +116,7 @@ int main(int argc, char* argv[])
         rapidxml::xml_node<>* currentPosting = currentTransaction->first_node("postings")
                                                ->first_node("posting");
 
+        std::string suffixCommodity = "S";
         while (currentPosting != nullptr) {
             auto posting = new Posting;
             posting->accountName = currentPosting->first_node("account")
@@ -125,6 +126,14 @@ int main(int argc, char* argv[])
                                         ->first_node("amount")
                                         ->first_node("quantity")
                                         ->value());
+            rapidxml::xml_node<>* currentCommodity = currentPosting->first_node("post-amount")
+                                        ->first_node("amount")
+                                        ->first_node("commodity");
+
+
+            if (currentCommodity->first_attribute("flags")->value() == suffixCommodity) {
+                posting->commodity = currentCommodity->first_node("symbol")->value();
+            }
             transaction->postings.push_back(*posting);
             currentPosting = currentPosting->next_sibling();
             delete posting;

@@ -1,7 +1,7 @@
 ASTYLE := $(shell command -v astyle 2> /dev/null)
 
 all:
-	g++ --pedantic -o boec main.cpp
+	g++ -std=gnu++11 --pedantic -o boec main.cpp
 
 release: format all
 

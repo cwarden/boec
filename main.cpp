@@ -131,7 +131,7 @@ int main(int argc, char* argv[])
                                         ->first_node("commodity");
 
 
-            if (currentCommodity->first_attribute("flags")->value() == suffixCommodity) {
+            if (currentCommodity && currentCommodity->first_attribute("flags")->value() == suffixCommodity) {
                 posting->commodity = currentCommodity->first_node("symbol")->value();
             }
             transaction->postings.push_back(*posting);

@@ -67,7 +67,7 @@ ledger xml | boec --template path/to/template.tex > /tmp/report.tex && pdflatex 
 
 For an example, have a look in the samples directory: Extending [template.tex](https://github.com/flugelfoxes/boec/blob/master/samples/template.tex) while parsing [ledgerfile.ldg](https://github.com/flugelfoxes/boec/blob/master/samples/ledgerfile.ldg) gives us the output as seen below.
 
-![Sample output of boec](https://raw.githubusercontent.com/flugelfoxes/boec/master/samples/example-output-pdf.png)
+![Sample output of boec](https://github.com/cwarden/boec/blob/master/samples/example-output-pdf.png)
 
 
 ## Installing boec
